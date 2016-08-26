@@ -3,9 +3,6 @@ package com.smxydx.vector.handler.impl;
 import com.smxydx.vector.handler.AbstractHandlerHolder;
 import com.smxydx.vector.handler.Handler;
 import io.netty.handler.codec.http.HttpObject;
-import org.apache.commons.collections4.map.ListOrderedMap;
-
-import java.util.List;
 
 /**
  * @author shaomingxing
