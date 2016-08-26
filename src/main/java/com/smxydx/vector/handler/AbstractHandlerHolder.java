@@ -1,21 +1,20 @@
 package com.smxydx.vector.handler;
 
+import org.apache.commons.collections4.map.ListOrderedMap;
+
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author shaomingxing
  * @since 16/8/12
  */
-public abstract class AbstractHandlerHolder implements HandlerHolder {
-    protected List<Handler<?>> handlerList;
+public abstract class AbstractHandlerHolder<T> implements HandlerHolder<T> {
+
+    protected ListOrderedMap<String, Handler<T>> handlerLocal = new ListOrderedMap<>();
 
     @Override
-    public void concurrentThis() {
-        synchronized (this) {
-            if (!(handlerList instanceof CopyOnWriteArrayList)) {
-                handlerList = new CopyOnWriteArrayList<>(handlerList);
-            }
-        }
+    public List<Handler<T>> getHandlerList() {
+        return handlerLocal.valueList();
     }
+
 }
